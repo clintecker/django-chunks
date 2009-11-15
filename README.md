@@ -6,18 +6,18 @@ By adding `chunks` to your installed apps list in your Django project and perfor
 
 The idea here is that you can create a chunk of content, name it with a unique key (for example: `home_page_left_bottom`) and then you can call this content from a normal template.
 
-===Why would anyone want this?===
+### Why would anyone want this? ###
 
 Well it essentially allows someone to define "chunks" (I had wanted to call it blocks, but that would be very confusing for obvious reasons) of content in your template that can be directly edited from the awesome Django admin interface.  Throwing a rich text editor control on top of it make it even easier.
 
-===Usage:===
-{{{
-{% load chunks %}
-<html>
-    <head>
-        <title>Test</title>
-    </head>
-    <body>
+### Usage: ###
+
+  {% load chunks %}
+  <html>
+      <head>
+          <title>Test</title>
+      </head>
+      <body>
         <h1> Blah blah blah</h1>
         <div id="sidebar">
             ...
@@ -29,7 +29,6 @@ Well it essentially allows someone to define "chunks" (I had wanted to call it b
             {% chunk "home_page_right" %}
         </div>
     </body>
-</html>
-}}}
+  </html>
 
 This is really helpful in those cases where you want to use `django.contrib.flatpages` but you need multiple content areas.  I hope this is helpful to people and I'll be making minor edits as I see them necessary.
