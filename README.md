@@ -12,10 +12,10 @@ Well it essentially allows someone to define "chunks" (I had wanted to call it b
 
 ### Usage: ###
 
-  {% load chunks %}
-  <html>
+    {% load chunks %}
+    <html>
       <head>
-          <title>Test</title>
+        <title>Test</title>
       </head>
       <body>
         <h1> Blah blah blah</h1>
@@ -28,7 +28,7 @@ Well it essentially allows someone to define "chunks" (I had wanted to call it b
         <div id="right">
             {% chunk "home_page_right" %}
         </div>
-    </body>
-  </html>
+      </body>
+    </html>
 
 This is really helpful in those cases where you want to use `django.contrib.flatpages` but you need multiple content areas.  I hope this is helpful to people and I'll be making minor edits as I see them necessary.
