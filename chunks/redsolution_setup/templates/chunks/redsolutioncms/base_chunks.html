@@ -1,0 +1,17 @@
+{% load redsolutioncms_tags %}{% start_block %} extends '{{ cms_settings.base_template }}' {% end_block %}
+{% raw %}
+{% block head %}
+    {% load chunks %}
+    {{ block.super }}
+    {% chunk "end-of-head" %}
+{% endblock head %}
+{% block body %}
+    {{ block.super }}
+    {% chunk "end-of-body" %}
+{% endblock body %}
+{% block footer %}
+    {{ block.super }}
+    <div id="contacts">{% chunk "contacts" %}</div>
+    <div id="copyright">{% chunk "copyright" %}</div> 
+{% endblock footer %}
+{% endraw %}

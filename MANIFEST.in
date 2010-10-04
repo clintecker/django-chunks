@@ -1,0 +1,2 @@
+recursive-include chunks *
+exclude *.orig *.pyc

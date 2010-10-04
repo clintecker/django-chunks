@@ -1,0 +1,3 @@
+{% load redsolutioncms_tags %}{% raw %}
+{% load chunks %}{% chunk "robots.txt" %}
+{% endraw %}
