@@ -4,9 +4,8 @@ from setuptools import setup, find_packages
 from distutils.core import setup
 
 setup(name='redsolutioncms.chunks',
-      version='0.1',
-      description=('Keyed blocks of content for use in your Django templates' +
-                   ' with RedsolutionCMS integration'),
+      version='0.1.0',
+      description=('Keyed blocks of content for use in your Django templates'),
       author='Clint Ecker',
       author_email='me@clintecker.com',
       url='http://code.google.com/p/django-chunks/',

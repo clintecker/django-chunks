@@ -1,2 +1,3 @@
-# ------------  django-chunks ----------------
+# ---- django-chunks ----
+
 INSTALLED_APPS += ['chunks']
