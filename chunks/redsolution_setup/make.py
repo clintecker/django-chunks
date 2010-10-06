@@ -11,7 +11,7 @@ class Make(BaseMake):
         }, 'w')
         cms_settings.render_to('urls.py', 'chunks/redsolutioncms/urls.pyt')
         cms_settings.render_to(['..', 'templates', 'robots.txt'],
-            'chunks/redsolutioncms/robots.txt')
+            'chunks/redsolutioncms/robots.txt', {}, 'w')
         cms_settings.base_template = 'base_chunks.html'
         cms_settings.save()
 
