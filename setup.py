@@ -1,6 +1,6 @@
 from distutils.core import setup
 
-setup(name='chunks',
+setup(name='django-chunks',
       version='0.1',
       description='Keyed blocks of content for use in your Django templates',
       author='Clint Ecker',
