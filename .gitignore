@@ -1,2 +1,6 @@
 *.swp
 .svn
+.idea
+django_chunks.egg-info
+.DS_Store
+*.pyc
