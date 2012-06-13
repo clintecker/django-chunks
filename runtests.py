@@ -10,6 +10,11 @@ settings.configure(
             'NAME': os.path.join(os.path.dirname(__file__), 'testdb.sqlite'),
             }
         },
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            }
+        },
     INSTALLED_APPS = ('chunks',)
 )
 
