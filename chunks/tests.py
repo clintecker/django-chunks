@@ -4,7 +4,7 @@ from django.core.cache import cache
 
 from chunks.models import Chunk
 
-class ChuckTemplateTagTestCase(TestCase):
+class BaseTestCase(TestCase):
 
     def setUp(self):
         self.home_page_left = Chunk.objects.create(
@@ -12,6 +12,13 @@ class ChuckTemplateTagTestCase(TestCase):
             content='This is the content for left box')
         cache.delete('cache_home_page_left')
 
+
+    def render_template(self, content_string, context={}):
+        template = Template(content_string)
+        return template.render(Context(context))
+
+
+class ChuckTemplateTagTestCase(BaseTestCase):
 
     def test_should_render_content_from_key(self):
         result = self.render_template('{% load chunks %}'
@@ -63,6 +70,48 @@ class ChuckTemplateTagTestCase(TestCase):
                                  '{% chunk "home_page_left\' %}')
 
 
-    def render_template(self, content_string, context={}):
-        template = Template(content_string)
-        return template.render(Context(context))
+class GetChuckTemplateTagTestCase(BaseTestCase):
+
+    def test_should_get_chunk_object_given_key(self):
+        result = self.render_template('{% load chunks %}'
+                                      '{% get_chunk "home_page_left" as chunk_obj %}'
+                                      '<p>{{ chunk_obj.content }}</p>')
+
+        self.assertEquals('<p>This is the content for left box</p>', result)
+
+    def test_should_assign_varname_to_None_if_chunk_not_found(self):
+        result = self.render_template('{% load chunks %}'
+                                      '{% get_chunk "chunk_not_found" as chunk_obj %}'
+                                      '{{ chunk_obj }}')
+
+        self.assertEquals('None', result)
+
+    def test_should_fail_if_wrong_number_of_arguments(self):
+        with self.assertRaisesRegexp(TemplateSyntaxError, 'Invalid syntax. Usage: {% get_chunk "key" as varname %}'):
+            self.render_template('{% load chunks %}'
+                                 '{% get_chunk %}')
+
+        with self.assertRaisesRegexp(TemplateSyntaxError, 'Invalid syntax. Usage: {% get_chunk "key" as varname %}'):
+            self.render_template('{% load chunks %}'
+                                 '{% get_chunk "home_page_left" %}')
+
+        with self.assertRaisesRegexp(TemplateSyntaxError, 'Invalid syntax. Usage: {% get_chunk "key" as varname %}'):
+            self.render_template('{% load chunks %}'
+                                 '{% get_chunk "home_page_left" as %}')
+
+        with self.assertRaisesRegexp(TemplateSyntaxError, 'Invalid syntax. Usage: {% get_chunk "key" as varname %}'):
+            self.render_template('{% load chunks %}'
+                                 '{% get_chunk "home_page_left" notas chunk_obj %}')
+
+        with self.assertRaisesRegexp(TemplateSyntaxError, 'Invalid syntax. Usage: {% get_chunk "key" as varname %}'):
+            self.render_template('{% load chunks %}'
+                                 '{% get_chunk "home_page_left" as chunk_obj invalid %}')
+
+    def test_should_fail_if_key_not_quoted(self):
+        with self.assertRaisesRegexp(TemplateSyntaxError, "Key argument to u'get_chunk' must be in quotes"):
+            result = self.render_template('{% load chunks %}'
+                                          '{% get_chunk home_page_left as chunk_obj %}')
+
+        with self.assertRaisesRegexp(TemplateSyntaxError, "Key argument to u'get_chunk' must be in quotes"):
+            result = self.render_template('{% load chunks %}'
+                                          '{% get_chunk "home_page_left\' as chunk_obj %}')
