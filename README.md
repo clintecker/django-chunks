@@ -31,4 +31,13 @@ Well it essentially allows someone to define "chunks" (I had wanted to call it b
       </body>
     </html>
 
+if you need the `Chunk` object in the template (maybe you've added some generic relations to it) you should use the `{% get chunk %}` templatetag:
+
+    {% load chunks %}
+
+    {% get_chunk "home_page_left" as chunk_obj %}
+
+    <!-- ... use the Chuck object, then display it's contents -->
+    <div>{{ chuck_obj.content }}</div>
+
 This is really helpful in those cases where you want to use `django.contrib.flatpages` but you need multiple content areas.  I hope this is helpful to people and I'll be making minor edits as I see them necessary.
