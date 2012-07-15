@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='django-chunks',
-      version='0.2',
+      version='0.3',
       description='Keyed blocks of content for use in your Django templates',
       author='Clint Ecker',
       author_email='me@clintecker.com',

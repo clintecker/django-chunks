@@ -1,3 +1,7 @@
 django-chunks was originally developed by Clint Ecker
 
-Caching code suggested by Kevin Fricovsky (howiworkdaily.com)
+* Caching code suggested by Kevin Fricovsky (howiworkdaily.com)
+* Igor Sobreira
+* https://github.com/firass
+* https://github.com/imagescape
+* Daniel Fekete
