@@ -1,11 +1,13 @@
 from django import template
 from django.db import models
 from django.core.cache import cache
+from templatetags import get_cache_suffix
 
 register = template.Library()
 
 Chunk = models.get_model('chunks', 'chunk')
-CACHE_PREFIX = "chunk_"
+CACHE_PREFIX = 'chunks_'
+CACHE_SUFFIX = get_cache_suffix()
 
 def do_get_chunk(parser, token):
     # split_contents() knows not to split quoted strings.
@@ -30,7 +32,7 @@ class ChunkNode(template.Node):
     
     def render(self, context):
         try:
-            cache_key = CACHE_PREFIX + self.key
+            cache_key = CACHE_PREFIX + self.key + CACHE_SUFFIX
             c = cache.get(cache_key)
             if c is None:
                 c = Chunk.objects.get(key=self.key)
