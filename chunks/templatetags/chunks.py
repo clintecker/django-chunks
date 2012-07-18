@@ -6,16 +6,16 @@ from md5 import md5
 
 register = template.Library()
 
-Chunk = models.get_model('chunks', 'chunk')
-CACHE_PREFIX = 'chunks_'
-CACHE_SUFFIX = get_cache_suffix()
-
 def get_cache_suffix():
     try:
         project_hash = md5(settings.SECRET_KEY).hexdigest()
         return "_%s" % project_hash
     except AttributeError:
         return "_%s" % md5().hexdigest()
+
+Chunk = models.get_model('chunks', 'chunk')
+CACHE_PREFIX = 'chunks_'
+CACHE_SUFFIX = get_cache_suffix()
 
 def do_get_chunk(parser, token):
     # split_contents() knows not to split quoted strings.
