@@ -2,7 +2,7 @@ from django import template
 from django.conf import settings
 from django.core.cache import cache
 from django.db import models
-from md5 import md5 
+from hashlib import md5 
 
 register = template.Library()
 
