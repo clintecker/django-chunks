@@ -1,2 +1,2 @@
 recursive-include chunks *
-exclude *.orig *.pyc
+global-exclude *.orig *.pyc
