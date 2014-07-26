@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-27 01:43+0400\n"
+"POT-Creation-Date: 2014-07-26 12:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,10 +39,14 @@ msgstr "Описание"
 msgid "Short Description"
 msgstr "Краткое описание блока"
 
-#: models.py:17
+#: models.py:15
+msgid "Enabled"
+msgstr "Включено"
+
+#: models.py:18
 msgid "chunk"
 msgstr "блок"
 
-#: models.py:18
+#: models.py:19
 msgid "chunks"
 msgstr "блоки"
