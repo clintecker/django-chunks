@@ -7,6 +7,7 @@ register = template.Library()
 Chunk = models.get_model('chunks', 'chunk')
 CACHE_PREFIX = "chunk_"
 
+
 def do_chunk(parser, token):
     # split_contents() knows not to split quoted strings.
     tokens = token.split_contents()
@@ -20,7 +21,9 @@ def do_chunk(parser, token):
     key = ensure_quoted_string(key, "%r tag's argument should be in quotes" % tag_name)
     return ChunkNode(key, cache_time)
 
+
 class ChunkNode(template.Node):
+
     def __init__(self, key, cache_time=0):
        self.key = key
        self.cache_time = cache_time
@@ -32,7 +35,10 @@ class ChunkNode(template.Node):
             if c is None:
                 c = Chunk.objects.get(key=self.key)
                 cache.set(cache_key, c, int(self.cache_time))
-            content = c.content
+            if c.enabled:
+                content = c.content
+            else:
+                content = ''
         except Chunk.DoesNotExist:
             content = ''
         return content
@@ -45,6 +51,7 @@ def do_get_chunk(parser, token):
     tagname, key, varname = tokens[0], tokens[1], tokens[3]
     key = ensure_quoted_string(key, "Key argument to %r must be in quotes" % tagname)
     return GetChunkNode(key, varname)
+
 
 class GetChunkNode(template.Node):
     def __init__(self, key, varname):

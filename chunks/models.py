@@ -12,6 +12,7 @@ class Chunk(models.Model):
     key = models.CharField(_(u'Key'), help_text=_(u"A unique name for this chunk of content"), blank=False, max_length=255, unique=True)
     content = models.TextField(_(u'Content'), blank=True)
     description = models.CharField(_(u'Description'), blank=True, max_length=64, help_text=_(u"Short Description"))
+    enabled = models.BooleanField(_(u'Enabled'), default=True)
 
     class Meta:
         verbose_name = _(u'chunk')
