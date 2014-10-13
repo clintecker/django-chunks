@@ -26,7 +26,7 @@ Well it essentially allows someone to define "chunks" (I had wanted to call it b
             {% chunk "home_page_left" %}
         </div>
         <div id="right">
-            {% chunk "home_page_right" %}
+            {% chunk "home_page_right" [optional cache timeout in seconds] %}
         </div>
       </body>
     </html>
