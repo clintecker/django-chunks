@@ -2,6 +2,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+
 class Chunk(models.Model):
     """
     A Chunk is a piece of content associated
@@ -10,7 +11,8 @@ class Chunk(models.Model):
     tag
     """
     key = models.CharField( _('Key'), help_text=_("A unique name for this chunk of content"), blank=False, max_length=255, unique=True)
-    content = models.TextField( _('Content'),blank=True)
+    content = models.TextField( _('Content'), blank=True)
+    file = models.FileField( _('File or image'), upload_to='uploads', null=True, blank=True)
     description = models.TextField( _('Description'),blank=True, unique=False)
 
     def __unicode__(self):
