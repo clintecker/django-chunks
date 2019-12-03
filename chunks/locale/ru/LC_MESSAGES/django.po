@@ -24,6 +24,10 @@ msgstr ""
 msgid "Key"
 msgstr "Название"
 
+#: models.py:15
+msgid "File or image"
+msgstr "Файл или изображение"
+
 #: models.py:11
 msgid "A unique name for this chunk of content"
 msgstr "Название должно быть уникальным"
