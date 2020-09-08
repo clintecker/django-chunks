@@ -17,7 +17,7 @@ Well it essentially allows someone to define "chunks" (I had wanted to call it b
 
 1. Install package
 
-    `` pip install git+git://github.com/oldroute/django-chunks.git``
+    `` pip install git+git://github.com/shoker174/django-chunks.git``
 
 2. Configure your settings file:
 
