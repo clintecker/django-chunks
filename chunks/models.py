@@ -15,7 +15,7 @@ class Chunk(models.Model):
     file = models.FileField( _('File or image'), upload_to='uploads', null=True, blank=True)
     description = models.TextField( _('Description'),blank=True, unique=False)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % (self.key,)
 
     class Meta:

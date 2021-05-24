@@ -25,7 +25,7 @@ def chunks_processor(request):
         cache.set(CACHE_KEY, json.dumps(raw_chunks, ensure_ascii=False))
 
     chunks = {}
-    for key, val in raw_chunks.iteritems():
+    for key, val in raw_chunks.items():
         chunks[key] = {
             'content': mark_safe(val['content']),
             'file': val['file']

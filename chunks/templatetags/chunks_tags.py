@@ -13,7 +13,7 @@ def chunk(key):
         return ''
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_chunk(key):
     try:
         return Chunk.objects.get(key=key)
